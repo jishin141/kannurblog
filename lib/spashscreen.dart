@@ -1,194 +1,14 @@
-// // import 'package:flutter/material.dart';
-// // import 'package:google_fonts/google_fonts.dart';
-
-// // class SplashScreen extends StatelessWidget {
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return MaterialApp(
-// //       home: Scaffold(
-// //         backgroundColor: Colors.black, // Matches the background in the design
-// //         body: Center(
-// //           child: Column(
-// //             children: [
-// //               Expanded(
-// //                 child: Stack(
-// //                   children: [
-// //                     Image.asset(
-// //                       'asset/images/image.jpg', // Update with your image path
-// //                       fit: BoxFit.cover,
-// //                       height: double.infinity,
-// //                       width: double.infinity,
-// //                     ),
-// //                     Positioned(
-// //                       left: 44,
-// //                       // top: 18, // Adjust the position based on your design
-// //                       child: Column(
-// //                         children: 'KANNUR'.split('').map((letter) {
-// //                           return Stack(
-// //                             children: [
-// //                               Text(
-// //                                 letter,
-// //                                 style: GoogleFonts.nerkoOne(
-// //                                   fontSize: 116,
-// //                                   fontWeight: FontWeight.bold,
-// //                                   foreground: Paint()
-// //                                     ..style = PaintingStyle.stroke
-// //                                     ..strokeWidth = 18
-// //                                     ..color = Colors.white,
-// //                                   shadows: [
-// //                                     Shadow(
-// //                                       blurRadius: 4.0,
-// //                                       color: Colors.black,
-// //                                       offset: Offset(2, 2),
-// //                                     ),
-// //                                   ],
-// //                                 ),
-// //                               ),
-// //                               Text(
-// //                                 letter,
-// //                                 style: GoogleFonts.nerkoOne(
-// //                                   fontSize: 118,
-// //                                   fontWeight: FontWeight.bold,
-// //                                   color: Colors.black,
-// //                                 ),
-// //                               ),
-// //                             ],
-// //                           );
-// //                         }).toList(),
-// //                       ),
-// //                     ),
-// //                   ],
-// //                 ),
-// //               ),
-// //             ],
-// //           ),
-// //         ),
-// //       ),
-// //     );
-// //   }
-// // }
-// import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
-
-// class SplashScreen extends StatefulWidget {
-//   @override
-//   _SplashScreenState createState() => _SplashScreenState();
-// }
-
-// class _SplashScreenState extends State<SplashScreen>
-//     with SingleTickerProviderStateMixin {
-//   late AnimationController _controller;
-//   late Animation<Offset> _animation;
-
-//   @override
-//   void initState() {
-//     super.initState();
-
-//     // Initialize the animation controller and animation.
-//     _controller = AnimationController(
-//       duration: Duration(seconds: 2), // Duration of the animation
-//       vsync: this,
-//     );
-
-//     // Define a sliding animation from outside the screen (top) to the center.
-//     _animation = Tween<Offset>(begin: Offset(0, -1), end: Offset(0, 0)).animate(
-//       CurvedAnimation(
-//         parent: _controller,
-//         curve: Curves.easeInOut,
-//       ),
-//     );
-
-//     // Start the animation when the screen loads.
-//     _controller.forward();
-//   }
-
-//   @override
-//   void dispose() {
-//     _controller
-//         .dispose(); // Clean up the controller when the widget is disposed.
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         backgroundColor: Colors.black, // Matches the background in the design
-//         body: Center(
-//           child: Column(
-//             children: [
-//               Expanded(
-//                 child: Stack(
-//                   children: [
-//                     Image.asset(
-//                       'asset/images/image.jpg', // Update with your image path
-//                       fit: BoxFit.cover,
-//                       height: double.infinity,
-//                       width: double.infinity,
-//                     ),
-//                     Positioned(
-//                       left: 44, // Adjust the position of the text
-//                       child: Column(
-//                         crossAxisAlignment: CrossAxisAlignment.center,
-//                         children: 'KANNUR'.split('').map((letter) {
-//                           return SlideTransition(
-//                             position: _animation,
-//                             child: Stack(
-//                               children: [
-//                                 // Stroke Text
-//                                 Text(
-//                                   letter,
-//                                   style: GoogleFonts.nerkoOne(
-//                                     fontSize: 118, // Adjust font size to fit
-//                                     fontWeight: FontWeight.bold,
-//                                     // Stroke effect using Paint
-//                                     foreground: Paint()
-//                                       ..style = PaintingStyle.stroke
-//                                       ..strokeWidth = 18
-//                                       ..color = Colors.white, // Stroke color
-//                                     shadows: [
-//                                       Shadow(
-//                                         blurRadius: 4.0,
-//                                         color: Colors.black,
-//                                         offset: Offset(2, 2),
-//                                       ),
-//                                     ],
-//                                   ),
-//                                 ),
-//                                 // Solid Text (fill) on top of stroke
-//                                 Text(
-//                                   letter,
-//                                   style: GoogleFonts.nerkoOne(
-//                                     fontSize: 118, // Adjust font size to fit
-//                                     fontWeight: FontWeight.bold,
-//                                     color: Colors.black, // Fill color
-//                                   ),
-//                                 ),
-//                               ],
-//                             ),
-//                           );
-//                         }).toList(),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kannurblog/homepage.dart';
+import 'package:kannurblog/data/app_data.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen>
@@ -230,6 +50,9 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
+    // Fetch the size of the screen
+    final size = MediaQuery.of(context).size;
+
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
@@ -239,31 +62,40 @@ class _SplashScreenState extends State<SplashScreen>
               Expanded(
                 child: Stack(
                   children: [
+                    // Background image
                     Image.asset(
-                      'asset/images/image.jpg',
+                      AppData.splashBackgroundImage,
                       fit: BoxFit.cover,
-                      height: double.infinity,
-                      width: double.infinity,
+                      height: size.height, // Make the image take full height
+                      width: size.width, // Make the image take full width
                     ),
+                    // Text positioned centrally, but with responsive adjustments
                     Positioned(
-                      left: 44, // Adjust the position of the text
+                      left:
+                          size.width * 0.15, // Make the text's position dynamic
+                      top: size.height * 0.01, // Position text responsively
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: 'KANNUR'.split('').map((letter) {
+                        children: AppData.pageTitles['HomePage']!
+                            .split('')
+                            .map((letter) {
                           return FadeTransition(
                             opacity: _fadeAnimation,
                             child: Stack(
                               children: [
+                                // Outline text for stroke effect
                                 Text(
                                   letter,
                                   style: GoogleFonts.nerkoOne(
-                                    fontSize: 118,
+                                    fontSize: size.width *
+                                        0.24, // Responsive font size
                                     fontWeight: FontWeight.bold,
                                     foreground: Paint()
                                       ..style = PaintingStyle.stroke
-                                      ..strokeWidth = 18
+                                      ..strokeWidth = size.width *
+                                          0.025 // Responsive stroke width
                                       ..color = Colors.white,
-                                    shadows: [
+                                    shadows: const [
                                       Shadow(
                                         blurRadius: 4.0,
                                         color: Colors.black,
@@ -272,10 +104,12 @@ class _SplashScreenState extends State<SplashScreen>
                                     ],
                                   ),
                                 ),
+                                // Main text in black for the fill effect
                                 Text(
                                   letter,
                                   style: GoogleFonts.nerkoOne(
-                                    fontSize: 118,
+                                    fontSize: size.width *
+                                        0.24, // Responsive font size
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
                                   ),
